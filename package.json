@@ -4,8 +4,8 @@
   "description": "learn node js",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js",
-    "build": "app.js"
+    "start": "nodemon index.js",
+    "build": "node index.js"
   },
   "author": "vishal vijayan",
   "license": "ISC",
