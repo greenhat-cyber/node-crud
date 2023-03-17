@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const teacherRoute = require('./routes/teacher');
+const teacherRoute = require('../routes/teacher');
 const { MongoClient, ServerApiVersion } = require('mongodb');
 require('dotenv').config()
 
