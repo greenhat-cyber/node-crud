@@ -1,0 +1,17 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "title" : "node-crud",
+    "description" : "",
+    "version" : "1.0.0"
+  },
+  "servers" : [ {
+    "url" : "https://virtserver.swaggerhub.com/greenhat-cyber/nodeCrud/1.0.0",
+    "description" : "SwaggerHub API Auto Mocking"
+  }, {
+    "url" : "https://node-crud-shxt.onrender.com/teacher/",
+    "description" : "SwaggerHub API Auto Mocking"
+  } ],
+  "paths" : { },
+  "components" : { }
+}
