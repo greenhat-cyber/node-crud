@@ -5,6 +5,7 @@ const teacherRoute = require("./routes/teacher");
 require("dotenv").config();
 const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUI = require("swagger-ui-express");
+const cors = require("cors");
 
 const app = express();
 const url = process.env.MONGODB_URI;
@@ -13,6 +14,7 @@ const url = process.env.MONGODB_URI;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(cors()); // Enable CORS
 
 const swaggerOptions = {
   swaggerDefinition: {
