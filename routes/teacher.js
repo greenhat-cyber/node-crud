@@ -1,6 +1,6 @@
-const express = require("express");
-const router = express.Router();
-const teachers = require("../modals/teacher");
+const express = require('express')
+const router = express.Router()
+const teachers = require('../modals/teacher')
 
 // POST
 /**
@@ -52,22 +52,22 @@ const teachers = require("../modals/teacher");
  *         description: Internal server error.
  */
 
-router.post("/add", async (req, res) => {
-  console.log("reqqq:", req.body);
+router.post('/add', async (req, res) => {
+  console.log('reqqq:', req.body)
   const data = new teachers({
     name: req.body.name,
     age: req.body.age,
     subject: req.body.subject,
     qualification: req.body.qualification,
-  });
+  })
 
   try {
-    const t1 = await data.save();
-    res.send(t1);
+    const t1 = await data.save()
+    res.send(t1)
   } catch (error) {
-    res.send(error);
+    res.send(error)
   }
-});
+})
 
 // GET
 
@@ -99,14 +99,14 @@ router.post("/add", async (req, res) => {
  *                 type: string
  */
 
-router.get("/list", async (req, res) => {
+router.get('/list', async (req, res) => {
   try {
-    const teacher = await teachers.find();
-    res.send(teacher);
+    const teacher = await teachers.find()
+    res.send(teacher)
   } catch (error) {
-    res.send(error);
+    res.send(error)
   }
-});
+})
 
 // Details GET
 
@@ -145,14 +145,14 @@ router.get("/list", async (req, res) => {
  *         description: Teacher record not found.
  */
 
-router.get("/details/:id", async (req, res) => {
+router.get('/details/:id', async (req, res) => {
   try {
-    const teacher = await teachers.findById(req.params.id);
-    res.send(teacher);
+    const teacher = await teachers.findById(req.params.id)
+    res.send(teacher)
   } catch (error) {
-    res.send(error);
+    res.send(error)
   }
-});
+})
 
 //UPDATE
 /**
@@ -189,13 +189,13 @@ router.get("/details/:id", async (req, res) => {
  *         description: Teacher record not found.
  */
 
-router.patch("/update/:id", async (req, res) => {
+router.patch('/update/:id', async (req, res) => {
   let data = await teachers.updateOne(
     { _id: req.params.id },
-    { $set: req.body }
-  );
-  res.send(data);
-});
+    { $set: req.body },
+  )
+  res.send(data)
+})
 
 // DELETE
 /**
@@ -216,12 +216,12 @@ router.patch("/update/:id", async (req, res) => {
  *       '404':
  *         description: Teacher record not found.
  */
-router.delete("/delete/:id", async (req, res) => {
+router.delete('/delete/:id', async (req, res) => {
   let data = await teachers.deleteOne(
     { _id: req.params.id },
-    { $set: req.body }
-  );
-  res.send(data);
-});
+    { $set: req.body },
+  )
+  res.send(data)
+})
 
-module.exports = router;
+module.exports = router
