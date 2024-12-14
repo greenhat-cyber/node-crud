@@ -10,6 +10,15 @@ const cors = require("cors");
 const app = express();
 const url = process.env.MONGODB_URI;
 
+mongoose
+  .connect(url)
+  .then(() => {
+    console.log("Connected to database");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors()); // Enable CORS
@@ -26,17 +35,13 @@ const swaggerOptions = {
 };
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
-app.use("/", swaggerUI.serve, swaggerUI.setup(swaggerDocs));
-// app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocs));
+// app.use("/", swaggerUI.serve, swaggerUI.setup(swaggerDocs));
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
-mongoose
-  .connect(url)
-  .then(() => {
-    console.log("Connected to database");
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+app.get('/', (req, res) => {
+  res.redirect('/api-docs');
+});
+
 
 app.use("/teacher", teacherRoute);
 
