@@ -32,12 +32,6 @@ const swaggerOptions = {
         email: "developer@example.com",
       },
     },
-    servers: [
-      {
-        url: `http://localhost:${PORT}`,
-        description: "Development server",
-      },
-    ],
   },
   apis: ["./routes/*.js"],
 };
